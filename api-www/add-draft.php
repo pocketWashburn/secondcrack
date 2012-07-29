@@ -23,17 +23,17 @@ $bookmarklet_code = str_replace('TARGET', (isset($_SERVER['HTTPS']) ? 'https://'
 if (! isset($_GET['u'])) {
     ?>
     <p>
-        <a href="javascript:<?= rawurlencode(str_replace('EXTRA', 'is-link=1', $bookmarklet_code)) ?>">Draft Link</a> &bull;
-        <a href="javascript:<?= rawurlencode(str_replace('EXTRA', '', $bookmarklet_code)) ?>">Draft Article</a>
+        <a href="javascript:<?php echo rawurlencode(str_replace('EXTRA', 'is-link=1', $bookmarklet_code)) ?>">Draft Link</a> &bull;
+        <a href="javascript:<?php echo rawurlencode(str_replace('EXTRA', '', $bookmarklet_code)) ?>">Draft Article</a>
     </p>
     
     <p>
         Draft link code:<br/>
-        <textarea>javascript:<?= h(rawurlencode(str_replace('EXTRA', 'is-link=1', $bookmarklet_code))) ?></textarea>
+        <textarea>javascript:<?php echo h(rawurlencode(str_replace('EXTRA', 'is-link=1', $bookmarklet_code))) ?></textarea>
     </p>
     <p>
         Draft article code:<br/>
-        <textarea>javascript:<?= h(rawurlencode(str_replace('EXTRA', '', $bookmarklet_code))) ?></textarea>
+        <textarea>javascript:<?php echo h(rawurlencode(str_replace('EXTRA', '', $bookmarklet_code))) ?></textarea>
     </p>
     <?
     exit;
@@ -76,7 +76,7 @@ if (! chmod($output_filename, 0666)) die('File permission-set failed');
 ?>
 <html>
     <head>
-        <meta http-equiv="Refresh" content="1;url=<?= h($url) ?>">
+        <meta http-equiv="Refresh" content="1;url=<?php echo h($url) ?>">
         <meta name="viewport" content="width=320"/>
         <title>Saved draft</title>
     </head>
@@ -84,6 +84,6 @@ if (! chmod($output_filename, 0666)) die('File permission-set failed');
         Saved.
         <br/>
         <br/>
-        <a href="<?= h($url) ?>" style="font-size: 11px; color: #aaa;">redirecting back...</a>
+        <a href="<?php echo h($url) ?>" style="font-size: 11px; color: #aaa;">redirecting back...</a>
     </body>
 </html>
