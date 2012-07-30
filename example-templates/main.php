@@ -5,7 +5,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
         <meta name="viewport" content="width=device-width" />
         <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/>
-        <title><?= 
+        <title><?php echo 
             (isset($content['post']) ? h($content['post']['post-title']) . ' &ndash; ' : '') . 
             ($content['page-title'] != $content['blog-title'] && (
                 $content['page-type'] == 'page' || $content['page-type'] == 'archive' || $content['page-type'] == 'tag' || $content['page-type'] == 'type' 
@@ -31,27 +31,27 @@
             <? if ($content['page-type'] == 'page') { ?>
                 <article>
                     <header>
-                        <h2><?= h($content['page-title']) ?></h2>
+                        <h2><?php echo h($content['page-title']) ?></h2>
                     </header>
-                    <?= $content['page-body'] ?>
+                    <?php echo $content['page-body'] ?>
                 </article>
             <? } else { ?>
                 <? if (isset($content['posts'])) foreach ($content['posts'] as $post) { ?>
-                    <article<?= $post['post-type'] == 'link' ? ' class="link"' : '' ?>>
+                    <article<?php echo $post['post-type'] == 'link' ? ' class="link"' : '' ?>>
                         <header>
                             <h2>
-                                <a href="<?= h($post['post-permalink-or-link']) ?>"><?= h($post['post-title']) ?></a>
-                                <?= $post['post-type'] == 'link' ? '<span class="linkarrow">&rarr;</span>' : '' ?>
+                                <a href="<?php echo h($post['post-permalink-or-link']) ?>"><?php echo h($post['post-title']) ?></a>
+                                <?php echo $post['post-type'] == 'link' ? '<span class="linkarrow">&rarr;</span>' : '' ?>
                             </h2>
 
                             <p>
-                                <time datetime="<?= h(date('c', $post['post-timestamp'])) ?>" pubdate="pubdate"><?= date('F j, Y', $post['post-timestamp']) ?></time>
+                                <time datetime="<?php echo h(date('c', $post['post-timestamp'])) ?>" pubdate="pubdate"><?php echo date('F j, Y', $post['post-timestamp']) ?></time>
                                 &bull;
-                                <a class="permalink" title="Permalink" href="<?= h($post['post-permalink']) ?>">∞</a>
+                                <a class="permalink" title="Permalink" href="<?php echo h($post['post-permalink']) ?>">∞</a>
                             </p>
                         </header>
                     
-                        <?= $post['post-body'] ?>
+                        <?php echo $post['post-body'] ?>
                     </article>
                 <? } ?>
             <? } ?>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div style="float: left; width: 90px; text-align: right;">
                             <? } ?>
-                            <a href="<?= h($archive['archives-uri']) ?>"><?= $archive['archives-month-short-name'] ?>&nbsp;<?= $archive['archives-year'] ?></a>
+                            <a href="<?php echo h($archive['archives-uri']) ?>"><?php echo $archive['archives-month-short-name'] ?>&nbsp;<?php echo $archive['archives-year'] ?></a>
                             <br/>
                         <? } ?>
                     </div>
